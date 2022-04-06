@@ -27,6 +27,7 @@ public class Tour implements Serializable {
     @ManyToOne
     private TourPackage tourPackage;
     @Column
+    @Enumerated(EnumType.STRING)
     private Difficulty difficulty;
     @Column
     private Region region;
