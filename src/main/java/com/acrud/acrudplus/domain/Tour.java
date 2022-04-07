@@ -25,6 +25,7 @@ public class Tour implements Serializable {
     @Column
     private String keywords;
     @ManyToOne
+    @JoinColumn(name = "tour_package_code")
     private TourPackage tourPackage;
     @Column
     @Enumerated(EnumType.STRING)
