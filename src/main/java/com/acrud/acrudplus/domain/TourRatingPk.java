@@ -35,10 +35,8 @@ public class TourRatingPk implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         TourRatingPk that = (TourRatingPk) o;
-
         if (!tour.equals(that.tour)) return false;
         return customerId.equals(that.customerId);
-
     }
 
     @Override

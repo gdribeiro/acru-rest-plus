@@ -10,10 +10,8 @@ public class RatingDto {
     @Min(0)
     @Max(5)
     private Integer score;
-
     @Size(max = 255)
     private String comment;
-
     @NotNull
     private Integer customerId;
 
