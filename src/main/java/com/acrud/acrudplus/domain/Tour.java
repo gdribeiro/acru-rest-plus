@@ -8,7 +8,7 @@ import java.util.Objects;
 public class Tour implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column
     private String title;
@@ -33,7 +33,6 @@ public class Tour implements Serializable {
     @Column
     private Region region;
 
-
     public Tour(String title, String description, String blurb, Integer price, String duration, String bullets,
                 String keywords, TourPackage tourPackage, Difficulty difficulty, Region region) {
         this.title = title;
@@ -43,9 +42,9 @@ public class Tour implements Serializable {
         this.duration = duration;
         this.bullets = bullets;
         this.keywords = keywords;
+        this.tourPackage = tourPackage;
         this.difficulty = difficulty;
         this.region = region;
-        this.tourPackage = tourPackage;
     }
 
     protected Tour(){}
