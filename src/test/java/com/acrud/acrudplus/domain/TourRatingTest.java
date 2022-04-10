@@ -5,12 +5,9 @@ import org.junit.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.nullValue;
 import static org.hamcrest.core.Is.is;
-//import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 
-/**
- * Created by Mary Ellen Bowman
- */
+
 public class TourRatingTest {
 
     private Tour tour = new Tour("title","description","blurb", 50, "1 day", "bullet",

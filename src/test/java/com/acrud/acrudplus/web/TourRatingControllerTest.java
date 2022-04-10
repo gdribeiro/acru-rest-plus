@@ -116,17 +116,6 @@ public class TourRatingControllerTest {
         verify(serviceMock).update(TOUR_ID, CUSTOMER_ID, SCORE, COMMENT);
     }
 
-    /**
-     *  RestTemplate Patch only works if it uses httpclient. Method will only work if:
-     *  1. Include dependency
-     *      <dependency>
-     *            <groupId>org.apache.httpcomponents</groupId>
-     *           <artifactId>httpclient</artifactId>
-     *           <version>4.4.1</version>
-     *       </dependency>
-     *  2. Attach httpclient
-     *      restTemplate.getRestTemplate().setRequestFactory(new HttpComponentsClientHttpRequestFactory());
-     */
     @Test
     @Ignore
     public  void updateWithPatch() {

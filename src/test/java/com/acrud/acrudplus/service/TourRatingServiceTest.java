@@ -21,9 +21,6 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Mockito.*;
 
-/**
- * Created by Mary Ellen Bowman
- */
 @RunWith(MockitoJUnitRunner.class)
 public class TourRatingServiceTest {
 
@@ -44,10 +41,6 @@ public class TourRatingServiceTest {
     @Mock
     private TourRating tourRatingMock;
 
-
-    /**
-     * Mock responses to commonly invoked methods.
-     */
     @Before
     public void setupReturnValuesOfMockMethods() {
         when(tourRepositoryMock.findById(TOUR_ID)).thenReturn(Optional.of(tourMock));
@@ -56,11 +49,6 @@ public class TourRatingServiceTest {
         when(tourRatingRepositoryMock.findByTourId(TOUR_ID)).thenReturn(Arrays.asList(tourRatingMock));
     }
 
-    /**************************************************************************************
-     *
-     * Verify the service return value
-     *
-     **************************************************************************************/
     @Test
     public void lookupRatingById() {
         when(tourRatingRepositoryMock.findById(TOUR_RATING_ID)).thenReturn(Optional.of(tourRatingMock));
@@ -95,12 +83,6 @@ public class TourRatingServiceTest {
         //invoke and verify lookupRatings
         assertThat(service.lookupRatings(TOUR_ID, pageable), is(page));
     }
-
-    /**************************************************************************************
-     *
-     * Verify the invocation of dependencies.
-     *
-     **************************************************************************************/
 
     @Test
     public void delete() {
@@ -145,14 +127,6 @@ public class TourRatingServiceTest {
         verify(tourRatingMock).setComment("awful");
         verify(tourRatingMock).setScore(1);
     }
-
-     /**************************************************************************************
-     *
-     * Verify the invocation of dependencies
-     * Capture parameter values.
-     * Verify the parameters.
-     *
-     **************************************************************************************/
 
      @Test
     public void createNew() {

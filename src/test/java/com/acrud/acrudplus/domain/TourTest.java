@@ -1,7 +1,6 @@
 package com.acrud.acrudplus.domain;
 
-//import org.junit.Test;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import static junit.framework.TestCase.assertNull;
 import static org.hamcrest.MatcherAssert.assertThat;
