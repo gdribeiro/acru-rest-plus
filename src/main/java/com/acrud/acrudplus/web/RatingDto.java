@@ -10,8 +10,10 @@ public class RatingDto {
     @Min(0)
     @Max(5)
     private Integer score;
+
     @Size(max = 255)
     private String comment;
+
     @NotNull
     private Integer customerId;
 
@@ -21,7 +23,7 @@ public class RatingDto {
         this.customerId = customerId;
     }
 
-    protected RatingDto(){}
+    protected RatingDto() {}
 
     public Integer getScore() {
         return score;

@@ -3,6 +3,8 @@ package com.acrud.acrudplus.web;
 
 import com.acrud.acrudplus.domain.TourRating;
 import com.acrud.acrudplus.service.TourRatingService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(path = "/tours/{tourId}/ratings")
+@Tag(name = "Tour Rating", description = "The Rating for a Tour API")
 public class TourRatingController {
     private static final Logger LOGGER = LoggerFactory.getLogger(TourRatingController.class);
     private TourRatingService tourRatingService;
@@ -37,6 +40,7 @@ public class TourRatingController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
+    @Operation(summary = "Create a Tour Rating")
     public void createTourRating(@PathVariable(value = "tourId") int tourId, @RequestBody @Validated RatingDto ratingDto) {
         LOGGER.info("POST /tours/{}/ratings", tourId);
         tourRatingService.createNew(tourId, ratingDto.getCustomerId(), ratingDto.getScore(), ratingDto.getComment());
@@ -44,6 +48,7 @@ public class TourRatingController {
 
     @PostMapping("/{score}")
     @ResponseStatus(HttpStatus.CREATED)
+    @Operation(summary = "Give Many Tours Same Score")
     public void createManyTourRatings(@PathVariable(value = "tourId") int tourId,
                                       @PathVariable(value = "score") int score,
                                       @RequestParam("customers") Integer customers[]) {
@@ -52,6 +57,7 @@ public class TourRatingController {
     }
 
     @GetMapping
+    @Operation(summary = "Lookup All Ratings for a Tour")
     public Page<RatingDto> getAllRatingsForTour(@PathVariable(value = "tourId") int tourId, Pageable pageable,
                                                           PagedResourcesAssembler pagedAssembler) {
         LOGGER.info("GET /tours/{}/ratings", tourId);
@@ -62,12 +68,14 @@ public class TourRatingController {
     }
 
     @GetMapping("/average")
+    @Operation(summary = "Get the Average Score for a Tour")
     public AbstractMap.SimpleEntry<String, Double> getAverage(@PathVariable(value = "tourId") int tourId) {
         LOGGER.info("GET /tours/{}/ratings/average", tourId);
         return new AbstractMap.SimpleEntry<String, Double>("average", tourRatingService.getAverageScore(tourId));
     }
 
     @PutMapping
+    @Operation(summary = "Modify All Tour Rating Attributes")
     public RatingDto updateWithPut(@PathVariable(value = "tourId") int tourId, @RequestBody @Validated RatingDto ratingDto) {
         LOGGER.info("PUT /tours/{}/ratings", tourId);
         return toDto(tourRatingService.update(tourId, ratingDto.getCustomerId(),
@@ -75,6 +83,7 @@ public class TourRatingController {
     }
 
     @PatchMapping
+    @Operation(summary = "Modify Some Tour Rating Attributes")
     public RatingDto updateWithPatch(@PathVariable(value = "tourId") int tourId, @RequestBody @Validated RatingDto ratingDto) {
         LOGGER.info("PATCH /tours/{}/ratings", tourId);
         return toDto(tourRatingService.updateSome(tourId, ratingDto.getCustomerId(),

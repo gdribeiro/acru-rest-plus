@@ -102,5 +102,3 @@ public class TourRatingService {
                         + tourId + " for customer" + customerId));
     }
 }
-
-
