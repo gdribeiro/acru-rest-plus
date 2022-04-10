@@ -19,6 +19,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.6.7'
 	implementation group: 'org.springdoc', name: 'springdoc-openapi-data-rest', version: '1.6.7'
+	implementation 'junit:junit:4.13.1'
 
 	runtimeOnly 'com.h2database:h2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
